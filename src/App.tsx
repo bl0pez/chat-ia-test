@@ -8,7 +8,7 @@ type Message = {
   text: string;
 }
 
-const API_URL = 'http://xni5r36tbtl0f115p7lv6qdg.89.117.77.181.sslip.io/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://shopyaapi.fidelilocal.com/api';
 const STORE_ID = 'nuvole-mascotas';
 
 function App() {
