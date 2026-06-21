@@ -8,7 +8,7 @@ type Message = {
   text: string;
 }
 
-const API_URL = 'http://xni5r36tbtl0f115p7lv6qdg.89.117.77.181.sslip.io/api';
+const API_URL = 'https://shopya-api-ldbcv0-eec2fb-89-117-77-181.sslip.io/api';
 const STORE_ID = 'nuvole-mascotas';
 
 function App() {
@@ -17,7 +17,32 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<'global' | 'store'>('global');
   const [conversationId, setConversationId] = useState<string>('');
-  
+  const [isSyncing, setIsSyncing] = useState(false);
+
+  const handleSyncCategories = async () => {
+    setIsSyncing(true);
+    try {
+      const syncEndpoint = mode === 'global' 
+        ? `${API_URL}/ai-assistant/global/sync`
+        : `${API_URL}/ai-assistant/knowledge/sync/${STORE_ID}`;
+
+      const response = await fetch(syncEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      if (response.ok) {
+        alert('Categorías sincronizadas correctamente.');
+      } else {
+        alert('Hubo un problema al sincronizar las categorías.');
+      }
+    } catch (error) {
+      console.error('Error syncing categories:', error);
+      alert('Error de conexión al intentar sincronizar.');
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,6 +137,14 @@ function App() {
       <div className="header">
         <h1>✨ AI Assistant Tester</h1>
         <div className="header-controls">
+          <button 
+            className="sync-btn"
+            onClick={handleSyncCategories}
+            disabled={isSyncing}
+            title="Subir nuevas categorías"
+          >
+            {isSyncing ? 'Sincronizando...' : 'Sincronizar Categorías'}
+          </button>
           <div className="mode-selector">
             <button 
               className={`mode-btn ${mode === 'global' ? 'active' : ''}`}
