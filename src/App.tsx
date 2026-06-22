@@ -8,7 +8,7 @@ type Message = {
   text: string;
 }
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = 'https://shopya-api-ldbcv0-eec2fb-89-117-77-181.sslip.io/api';
 const STORE_ID = 'nuvole-mascotas';
 
 function App() {
