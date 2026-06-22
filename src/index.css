@@ -337,3 +337,61 @@ body {
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  #root {
+    padding: 0;
+  }
+  .app-container {
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .header h1 {
+    justify-content: center;
+  }
+  .header-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .mode-selector {
+    width: 100%;
+    display: flex;
+  }
+  .mode-btn {
+    flex: 1;
+    text-align: center;
+  }
+  .sync-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .session-selector {
+    width: 100%;
+  }
+  .session-input {
+    width: 100%;
+  }
+  .chat-area {
+    padding: 1rem;
+  }
+  .message {
+    max-width: 90%;
+  }
+  .input-area {
+    padding: 1rem;
+  }
+  .input-form {
+    flex-direction: column;
+  }
+  .send-btn {
+    padding: 1rem;
+  }
+}
+
