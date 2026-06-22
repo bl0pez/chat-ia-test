@@ -8,7 +8,7 @@ type Message = {
   text: string;
 }
 
-const API_URL = 'https://shopya-api-ldbcv0-eec2fb-89-117-77-181.sslip.io/api';
+const API_URL = 'http://localhost:5001/api';
 const STORE_ID = 'nuvole-mascotas';
 
 function App() {
@@ -129,7 +129,7 @@ function App() {
 
   const clearChat = () => {
     setMessages([]);
-    setConversationId(`session-${Date.now()}`);
+    // Ya no sobrescribimos el ID de la sesión para que el usuario pueda mantener su identificador.
   }
 
   return (
@@ -158,6 +158,16 @@ function App() {
             >
               Tienda ({STORE_ID})
             </button>
+          </div>
+          <div className="session-selector">
+            <input
+              type="text"
+              className="session-input"
+              value={conversationId}
+              onChange={(e) => setConversationId(e.target.value)}
+              placeholder="Tu Nombre / ID"
+              title="Ingresa tu nombre o ID para mantener una conversación única"
+            />
           </div>
         </div>
       </div>

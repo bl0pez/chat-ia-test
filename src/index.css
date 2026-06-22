@@ -74,6 +74,34 @@ body {
 .header-controls {
   display: flex;
   gap: 1rem;
+  align-items: center;
+}
+
+.session-selector {
+  display: flex;
+  align-items: center;
+}
+
+.session-input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  width: 180px;
+}
+
+.session-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.session-input::placeholder {
+  color: var(--text-muted);
 }
 
 .mode-selector {
